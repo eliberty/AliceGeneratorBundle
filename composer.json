@@ -1,5 +1,5 @@
 {
-    "name": "trappar/alice-generator-bundle",
+    "name": "eliberty/alice-generator-bundle",
     "description": "Symfony bundle for generating Alice fixtures from Doctrine entities",
     "keywords": ["fixture", "data", "test", "orm", "doctrine"],
     "type": "symfony-bundle",
