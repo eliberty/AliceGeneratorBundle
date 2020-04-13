@@ -13,7 +13,7 @@ services:
         arguments: ['@annotation_reader']
 
     trappar_alice_generator.metadata.chain_driver:
-        public: false
+        public: true
         class: Metadata\Driver\DriverChain
         arguments:
             - ['@Trappar\AliceGenerator\Metadata\Driver\YamlDriver', '@Trappar\AliceGenerator\Metadata\Driver\AnnotationDriver']
@@ -71,6 +71,9 @@ services:
     Trappar\AliceGenerator\ObjectHandler\DateTimeHandler:
         public: false
 
+    Trappar\AliceGenerator\ObjectHandler\MyclabEnumHandler:
+        public: false
+
     # Object Handler Registries
     Trappar\AliceGenerator\ObjectHandlerRegistry:
         public: false
@@ -78,6 +81,7 @@ services:
             -
                 - '@Trappar\AliceGenerator\ObjectHandler\CollectionHandler'
                 - '@Trappar\AliceGenerator\ObjectHandler\DateTimeHandler'
+                - '@Trappar\AliceGenerator\ObjectHandler\MyclabEnumHandler'
 
     # Yaml Writer
     Trappar\AliceGenerator\YamlWriter:
@@ -100,7 +104,7 @@ services:
 
 
     Trappar\AliceGenerator\FixtureGenerator:
-        public: true
+        public: false
         arguments:
             - '@Trappar\AliceGenerator\ValueVisitor'
             - '@Trappar\AliceGenerator\YamlWriter'

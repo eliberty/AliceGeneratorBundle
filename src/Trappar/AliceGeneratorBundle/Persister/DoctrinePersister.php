@@ -22,8 +22,11 @@ class DoctrinePersister extends BaseDoctrinePersister
     {
         try {
             $class = $this->getClass($object);
-
-            return $this->doctrine->getManagerForClass($class)->getClassMetadata($class);
+            $manager = $this->doctrine->getManagerForClass($class);
+            if (null === $manager) {
+                throw new \RuntimeException(sprintf('unable to find manager for %s', $class));
+            }
+            return $manager->getClassMetadata($class);
         } catch (\Exception $e) {
             return false;
         }
